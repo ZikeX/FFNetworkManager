@@ -23,7 +23,7 @@
 ///修改缓存文件路径(可以设置不同类型缓存，在不同文件路径下)
 - (FFBaseCacheManager *)changeCachePath:(NSString *)cachePath;
 ///保存缓存
-- (void)saveCache:(id)cache withKey:(NSString *)key;
+- (void)saveCache:(id)cache withKey:(NSString *)key complectionBlock:(void(^)(NSString *))block;
 ///读取缓存
 - (void)cacheWithKey:(NSString *)key withBlock:(void (^) (NSString *,id))block;
 ///删除缓存

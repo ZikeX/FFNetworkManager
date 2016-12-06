@@ -33,14 +33,16 @@
     return instance;
 }
 
-- (void)saveCache:(id)cache withKey:(NSString *)key {
+- (void)saveCache:(id)cache withKey:(NSString *)key complectionBlock:(void(^)(NSString *))block {
     NSDictionary *data = @{kDateKey:[NSDate date],
                            kCacheDataKey:cache};
-    //伊布执行，提高性能
+    
+    __weak typeof(self)weakSelf = self;
     [self.yyCache.diskCache setObject:data forKey:key withBlock:^{
-        
+        if (block) {
+            block(self.yyCache.diskCache.path);
+        }
     }];
-//    Log(@"%@",self.yyCache.diskCache.path);
 }
 
 - (void)cacheWithKey:(NSString *)key withBlock:(void (^) (NSString *,id))block{
