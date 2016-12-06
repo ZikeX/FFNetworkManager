@@ -1,0 +1,6 @@
+framework module FFBasePod {
+  umbrella header "FFBasePod-umbrella.h"
+
+  export *
+  module * { export * }
+}

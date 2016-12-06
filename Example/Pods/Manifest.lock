@@ -1,0 +1,45 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - FFBasePod (0.1.0)
+  - FFNetworkManager (0.1.0):
+    - AFNetworking
+    - FFBasePod
+    - FFSupportPod
+    - YYCache
+    - YYModel
+  - FFSupportPod (0.1.0)
+  - YYCache (1.0.4)
+  - YYModel (1.0.4)
+
+DEPENDENCIES:
+  - FFNetworkManager (from `../`)
+
+EXTERNAL SOURCES:
+  FFNetworkManager:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FFBasePod: d3ac67411e82559a5eb76db6d6d3d65f7a323399
+  FFNetworkManager: d958749051259a94a525c08ea3399007b3f325f6
+  FFSupportPod: fedb785d5e6bc821073a697372bdf2ce94b38a1e
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+PODFILE CHECKSUM: 59f238a1a6db7b1c338563e83a8a7ce63185c3e0
+
+COCOAPODS: 1.1.1

@@ -1,0 +1,6 @@
+framework module FFSupportPod {
+  umbrella header "FFSupportPod-umbrella.h"
+
+  export *
+  module * { export * }
+}

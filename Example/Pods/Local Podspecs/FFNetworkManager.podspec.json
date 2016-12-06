@@ -1,0 +1,43 @@
+{
+  "name": "FFNetworkManager",
+  "version": "0.1.0",
+  "summary": "A short description of FFNetworkManager.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/FFNetworkManager",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "xjq": "xujq@cig.com.cn"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/FFNetworkManager.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "FFNetworkManager/Classes/**/*",
+  "frameworks": [
+    "UIKit",
+    "Foundation"
+  ],
+  "dependencies": {
+    "FFBasePod": [
+
+    ],
+    "FFSupportPod": [
+
+    ],
+    "AFNetworking": [
+
+    ],
+    "YYCache": [
+
+    ],
+    "YYModel": [
+
+    ]
+  }
+}

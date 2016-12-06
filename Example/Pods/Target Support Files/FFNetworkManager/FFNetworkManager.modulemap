@@ -1,0 +1,6 @@
+framework module FFNetworkManager {
+  umbrella header "FFNetworkManager-umbrella.h"
+
+  export *
+  module * { export * }
+}
