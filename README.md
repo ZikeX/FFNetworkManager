@@ -22,7 +22,7 @@ pod "FFNetworkManager"
 
 ## Author
 
-xjq, xujq@cig.com.cn
+xujunquan, ian553087358@163.com
 
 ## License
 
