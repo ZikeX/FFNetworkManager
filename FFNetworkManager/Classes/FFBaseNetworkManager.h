@@ -9,18 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 #import "FFBaseNetworkModel.h"
-//#import "FFBaseCacheManager.h"
-
 @protocol FFBaseNetworkManagerDataSource;
-@protocol FFBaseNetworkManagerDelegate;
 
 #define kNetErrorAlertMsg @"网络异常"
 
 @interface FFBaseNetworkManager : NSObject
 @property (nonatomic, strong) AFHTTPSessionManager* sessionManager;
-
 @property (nonatomic, weak) id <FFBaseNetworkManagerDataSource> dataSource;
-@property (nonatomic, weak) id <FFBaseNetworkManagerDelegate> delegate;
 
 + (instancetype)networkManager;
 
@@ -77,7 +72,3 @@
 
 @end
 
-@protocol FFBaseNetworkManagerDelegate <NSObject>
-
-
-@end
