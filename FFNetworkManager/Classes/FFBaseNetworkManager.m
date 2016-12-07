@@ -67,9 +67,8 @@
         parametersWithToken = [self.dataSource parametersWithTokenFromeOriPara:parameters];
     }
     
-    Log(@"\n👉POST👉 \nbaseurl = %@\nurlString = /%@\nparameters = %@", self.baseUrl, URLString, [parametersWithToken queryString]?:@"");
-    //此处自己添加一个“/”，但请求中不必，会自动增加
-    Log(@"\nfullUrl = %@/%@%@",self.baseUrl,URLString,[parametersWithToken queryString]?:@"");
+    NSString *full = [NSString stringWithFormat:@"%@%@%@",self.baseUrl,URLString,[parametersWithToken queryString]?:@""];
+    Log(@"\n👉GET👉 \nbaseurl = %@\nurlString = /%@\nparameters = %@\nfullURL = %@%@%@", self.baseUrl, URLString, [parametersWithToken queryString]?:@"",full);
     
     //没有问题，self的task指针指向每次生成的task地址并为其赋值，闭包返回的是task的内容。
     self.currentTask = [self.sessionManager POST:URLString parameters:parametersWithToken progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -119,8 +118,8 @@
         parametersWithToken = [self.dataSource parametersWithTokenFromeOriPara:parameters];
     }
     
-    Log(@"\n👉GET👉 \nbaseurl = %@\nurlString = /%@\nparameters = %@", self.baseUrl, URLString, [parametersWithToken queryString]?:@"");
-    Log(@"\nfullUrl = %@/%@%@",self.baseUrl,URLString,[parametersWithToken queryString]?:@"");
+    NSString *full = [NSString stringWithFormat:@"%@%@%@",self.baseUrl,URLString,[parametersWithToken queryString]?:@""];
+    Log(@"\n👉GET👉 \nbaseurl = %@\nurlString = /%@\nparameters = %@\nfullURL = %@%@%@", self.baseUrl, URLString, [parametersWithToken queryString]?:@"",full);
     
     self.currentTask = [self.sessionManager GET:URLString parameters:parametersWithToken progress:^(NSProgress * _Nonnull uploadProgress) {
         //
