@@ -19,4 +19,9 @@
 //匹配车架号
 + (BOOL)validCarNumber:(NSString *)number;
 
+#pragma mark-
+//先从内部寻找资源，如果没有则从外部寻找
++ (UIImage *)getImageFromBundleWithName:(NSString *)imageName;
+
+
 @end

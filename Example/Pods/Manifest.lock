@@ -14,14 +14,22 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - FFBasePod (0.1.0)
+  - FFBasePod (0.1.1):
+    - Masonry
+    - ReactiveCocoa (~> 2.5)
   - FFNetworkManager (0.1.0):
     - AFNetworking
     - FFBasePod
-    - FFSupportPod
     - YYCache
     - YYModel
-  - FFSupportPod (0.1.0)
+  - Masonry (1.0.2)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
   - YYCache (1.0.4)
   - YYModel (1.0.4)
 
@@ -34,9 +42,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  FFBasePod: d3ac67411e82559a5eb76db6d6d3d65f7a323399
-  FFNetworkManager: 6d46c59189ca9ed8a3fc5f1ede87401ab8ba1ea2
-  FFSupportPod: fedb785d5e6bc821073a697372bdf2ce94b38a1e
+  FFBasePod: dc9b4787fb451ba456dd967b8171da8e5dd9bdfa
+  FFNetworkManager: ba0243695d2c6799e06ad5ef74fc0a6c14e418d0
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 

@@ -55,4 +55,20 @@
     return [test evaluateWithObject:number];
 }
 
+#pragma mark-
++ (UIImage *)getImageFromBundleWithName:(NSString *)imageName {
+    //使用pod库bundle中的图片
+    NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"FFMainView")];
+    NSString *bundlePath = [bundle pathForResource:@"FFMainView" ofType:@"bundle"];
+    NSBundle *resourceBundle = [NSBundle bundleWithPath:bundlePath];
+    UIImage *image = [UIImage imageNamed:imageName inBundle:resourceBundle compatibleWithTraitCollection:nil];
+    
+    //使用项目主体bundle中的图片
+    if (!image) {
+        resourceBundle = [NSBundle mainBundle];
+        image = [UIImage imageNamed:imageName inBundle:resourceBundle compatibleWithTraitCollection:nil];
+    }
+    return image;
+}
+
 @end

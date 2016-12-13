@@ -23,7 +23,6 @@ Pod::Spec.new do |s|
   s.framework    = "UIKit","Foundation"
 
   s.dependency 'FFBasePod'
-  s.dependency 'FFSupportPod'
   s.dependency 'AFNetworking'
   s.dependency 'YYCache'
   s.dependency 'YYModel'
