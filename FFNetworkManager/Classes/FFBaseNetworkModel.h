@@ -22,6 +22,9 @@ typedef NS_ENUM(NSInteger,FFNetState) {
 @property (nonatomic, assign) FFNetState netStatus;
 ///请求标志
 @property (nonatomic, copy) NSString *identifier;
+
+
+//服务器返回数据
 ///数据状态0-失败，1-成功
 @property (nonatomic, assign) NSInteger dataStatus;
 ///错误提示

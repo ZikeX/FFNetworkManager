@@ -28,10 +28,6 @@
 
 @implementation FFBaseNetworkManager
 
-+ (instancetype)networkManager {
-    return [[self alloc] init];
-}
-
 - (FFBaseNetworkManager *)supportCache:(BOOL)support {
     self.supportCache = support;
     return self;
@@ -61,9 +57,11 @@
     
     self.operationQueue = self.sessionManager.operationQueue;
     //设置token
-    NSDictionary *parametersWithToken = parameters;
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(parametersWithTokenFromeOriPara:)]) {
-        parametersWithToken = [self.dataSource parametersWithTokenFromeOriPara:parameters];
+    NSDictionary *parametersWithToken;
+    if (self.parametersWithToken) {
+        parametersWithToken = self.parametersWithToken(parameters);
+    }else{
+        parametersWithToken = parameters;
     }
     
     NSString *full = [NSString stringWithFormat:@"%@/%@%@",self.baseUrl,URLString,[parametersWithToken queryString]?:@""];
@@ -78,11 +76,6 @@
         model.identifier = task.taskDescription;
         model.netStatus = FFNetStateEffective;
         result(model);
-        
-        //缓存支持
-        if (self.supportCache) {
-            
-        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //failure
         FFBaseNetworkModel *model = [[FFBaseNetworkModel alloc] init];
@@ -97,7 +90,7 @@
         }
         model.identifier = task.taskDescription;
         model.dataStatus = 0;
-        model.msg = (error.code == NSURLErrorNotConnectedToInternet)?kNetErrorAlertMsg:error.localizedDescription;
+        model.msg = error.localizedDescription;
         model.data = nil;
         result(model);
     }];
@@ -112,9 +105,11 @@
     
     self.operationQueue = self.sessionManager.operationQueue;
     //设置token
-    NSDictionary *parametersWithToken = parameters;
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(parametersWithTokenFromeOriPara:)]) {
-        parametersWithToken = [self.dataSource parametersWithTokenFromeOriPara:parameters];
+    NSDictionary *parametersWithToken;
+    if (self.parametersWithToken) {
+        parametersWithToken = self.parametersWithToken(parameters);
+    }else{
+        parametersWithToken = parameters;
     }
     
     NSString *full = [NSString stringWithFormat:@"%@/%@%@",self.baseUrl,URLString,[parametersWithToken queryString]?:@""];
@@ -142,7 +137,7 @@
         }
         model.identifier = task.taskDescription;
         model.dataStatus = 0;
-        model.msg = (error.code == NSURLErrorNotConnectedToInternet)?kNetErrorAlertMsg:error.localizedDescription;
+        model.msg = error.localizedDescription;
         model.data = nil;
         result(model);
     }];
@@ -200,11 +195,10 @@
 }
 
 - (NSString *)baseUrl {
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(baseURL)]) {
-        return [self.dataSource baseURL];
-    }else{
-        return @"";
+    if (self.baseURL) {
+        return self.baseURL();
     }
+    return @"";
 }
 
 

@@ -9,15 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 #import "FFBaseNetworkModel.h"
-@protocol FFBaseNetworkManagerDataSource;
-
-#define kNetErrorAlertMsg @"网络异常"
 
 @interface FFBaseNetworkManager : NSObject
 @property (nonatomic, strong) AFHTTPSessionManager* sessionManager;
-@property (nonatomic, weak) id <FFBaseNetworkManagerDataSource> dataSource;
-
-+ (instancetype)networkManager;
+@property (nonatomic, copy) NSString* (^baseURL) (void);
+@property (nonatomic, copy) NSDictionary * (^parametersWithToken) (NSDictionary *);
 
 ///缓存支持
 - (FFBaseNetworkManager *)supportCache:(BOOL)support;
@@ -61,14 +57,4 @@
 
 @end
 
-
-#pragma mark- protocol
-@protocol FFBaseNetworkManagerDataSource <NSObject>
-@optional
-///设置baseURL
-@property (nonatomic, copy) NSString *baseURL;
-///对传输数据进行md5处理并增加参数
-- (NSDictionary *)parametersWithTokenFromeOriPara:(NSDictionary *)oriPar;
-
-@end
 
