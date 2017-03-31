@@ -75,6 +75,7 @@
         FFBaseNetworkModel *model = [FFBaseNetworkModel yy_modelWithJSON:responseObject];
         model.identifier = task.taskDescription;
         model.netStatus = FFNetStateEffective;
+        model.responseDictionary = responseObject;
         result(model);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //failure
@@ -89,9 +90,8 @@
             model.netStatus = FFNetStateServerError;
         }
         model.identifier = task.taskDescription;
-        model.dataStatus = 0;
-        model.msg = error.localizedDescription;
-        model.data = nil;
+        model.errorMsg = error.localizedDescription;
+        model.responseDictionary = nil;
         result(model);
     }];
     
@@ -122,6 +122,7 @@
         FFBaseNetworkModel *model = [FFBaseNetworkModel yy_modelWithJSON:responseObject];
         model.identifier = task.taskDescription;
         model.netStatus = FFNetStateEffective;
+        model.responseDictionary = responseObject;
         result(model);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //failure
@@ -136,36 +137,12 @@
             model.netStatus = FFNetStateServerError;
         }
         model.identifier = task.taskDescription;
-        model.dataStatus = 0;
-        model.msg = error.localizedDescription;
-        model.data = nil;
+        model.errorMsg = error.localizedDescription;
+        model.responseDictionary = nil;
         result(model);
     }];
     
     self.currentTask.taskDescription = self.identifier;
-    return self;
-}
-
-- (FFBaseNetworkManager *)downloadFileFromURL:(NSString *)sourceUrl toPath:(NSString *)desPath parameters:(NSDictionary *)parameters progress:(void(^)(float progress))progressBlock completion:(void(^)(NSURLResponse *reponse,NSURL *filePath,NSError *error))completionBlock{
-//    self.operationQueue = self.sessionManager.operationQueue;
-    sourceUrl = [NSString stringWithFormat:@"%@%@",self.baseUrl,sourceUrl];
-    NSLog(@"source url = %@",sourceUrl);
-    NSMutableURLRequest *request = [self.sessionManager.requestSerializer requestWithMethod:@"POST" URLString:sourceUrl parameters:parameters error:nil];
-
-    NSURLSessionDownloadTask *task = [self.sessionManager downloadTaskWithRequest:request
-                                                                         progress:^(NSProgress * _Nonnull downloadProgress) {
-                                                                             
-                                                                         } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-                                                                             return [NSURL fileURLWithPath:desPath];
-                                                                         } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-                                                                             if (completionBlock) {
-                                                                                 completionBlock(response,filePath,error);
-                                                                             }
-                                                                         }];
-    
-    
-    [task resume];
-
     return self;
 }
 

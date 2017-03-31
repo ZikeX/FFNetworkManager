@@ -25,8 +25,20 @@
     }];
     [manager supportCache:NO];
     [manager supportIdentifier:@"desId"];
-    [manager postURL:@"" parameters:nil result:^(FFBaseNetworkModel *responseObject) {
-        
+    
+    
+    
+    
+    NSString *url = @"http://test.yxt.easypass.cn/api/CommonService/GetArrivalDate";
+    [manager postURL:url parameters:nil result:^(FFBaseNetworkModel *responseObject) {
+
+        if (responseObject.dataValid) {
+            NSLog(@"使用dic = %@",responseObject.responseDictionary);
+            
+            
+            
+        }
+
     }];
     
 }

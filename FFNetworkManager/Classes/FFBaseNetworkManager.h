@@ -12,8 +12,11 @@
 
 @interface FFBaseNetworkManager : NSObject
 @property (nonatomic, strong) AFHTTPSessionManager* sessionManager;
+///baseURL
 @property (nonatomic, copy) NSString* (^baseURL) (void);
+///加密规则
 @property (nonatomic, copy) NSDictionary * (^parametersWithToken) (NSDictionary *);
+
 
 ///缓存支持
 - (FFBaseNetworkManager *)supportCache:(BOOL)support;
@@ -49,11 +52,7 @@
                           result:(void (^)(FFBaseNetworkModel *responseObject))result;
 
 
-- (FFBaseNetworkManager *)downloadFileFromURL:(NSString *)sourceUrl
-                                       toPath:(NSString *)desPath
-                                   parameters:(NSDictionary *)parameters
-                                     progress:(void(^)(float progress))progressBlock
-                                   completion:(void(^)(NSURLResponse *reponse,NSURL *filePath,NSError *error))completionBlock;
+
 
 @end
 
